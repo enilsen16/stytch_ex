@@ -8,6 +8,7 @@ defmodule StytchEx.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {Finch, name: MyFinch}
       # Starts a worker by calling: StytchEx.Worker.start_link(arg)
       # {StytchEx.Worker, arg}
     ]
