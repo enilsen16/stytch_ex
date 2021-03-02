@@ -1,6 +1,7 @@
 # StytchEx
 
-**TODO: Add description**
+An unofficial client library for the Stytch password-less authentication. Still pre-1.0 so things
+may change.
 
 ## Installation
 
