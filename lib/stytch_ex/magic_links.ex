@@ -1,4 +1,7 @@
 defmodule StytchEx.MagicLinks do
+  @moduledoc """
+  Functions for the magic links api
+  """
   alias StytchEx.Helpers
 
   @base_url Application.get_env(:stytch_ex, :base_url, "https://test.stytch.com/v1/")
