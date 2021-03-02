@@ -4,11 +4,14 @@ defmodule StytchEx.MixProject do
   def project do
     [
       app: :stytch_ex,
-      version: "0.1.0",
+      build_embedded: Mix.env() == :prod,
+      deps: deps(),
+      description: description(),
       elixir: "~> 1.11",
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
-      deps: deps()
+      name: "StytchEx",
+      source_url: "https://github.com/enilsen16/stytch_ex"
+      start_permanent: Mix.env() == :prod,
+      version: "0.1.0",
     ]
   end
 
@@ -18,6 +21,10 @@ defmodule StytchEx.MixProject do
       extra_applications: [:logger],
       mod: {StytchEx.Application, []}
     ]
+  end
+
+  defp description() do
+    "Unofficial client library for the Stytch passwordless auth service."
   end
 
   # Run "mix help deps" to learn about dependencies.
