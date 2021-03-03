@@ -15,16 +15,18 @@ defmodule StytchEx.MagicLinks do
     {"Authorization", "Basic #{Helpers.build_auth_token()}"}
   ]
 
+  def send_by_email(email) do
+    url = @base_url <> "magic_links/send_by_email"
+
+    body = build_body(email)
+
+    Finch.build(:post, url, @headers, body)
+    |> Finch.request(MyFinch)
+  end
+
   def login_or_create(email) do
     url = @base_url <> "magic_links/login_or_create"
-
-    data = %{
-      email: email,
-      login_magic_link_url: @magic_link_url,
-      signup_magic_link_url: @magic_link_url
-    }
-
-    body = Jason.encode!(data)
+    body = build_body(email)
 
     Finch.build(:post, url, @headers, body)
     |> Finch.request(MyFinch)
@@ -35,5 +37,15 @@ defmodule StytchEx.MagicLinks do
 
     Finch.build(:post, url, @headers)
     |> Finch.request(MyFinch)
+  end
+
+  defp build_body(email) do
+    data = %{
+      email: email,
+      login_magic_link_url: @magic_link_url,
+      signup_magic_link_url: @magic_link_url
+    }
+
+    Jason.encode!(data)
   end
 end
