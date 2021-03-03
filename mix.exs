@@ -11,7 +11,7 @@ defmodule StytchEx.MixProject do
       name: "StytchEx",
       source_url: "https://github.com/enilsen16/stytch_ex",
       start_permanent: Mix.env() == :prod,
-      version: "0.2.0"
+      version: "0.2.1"
     ]
   end
 
