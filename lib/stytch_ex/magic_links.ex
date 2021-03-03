@@ -4,13 +4,16 @@ defmodule StytchEx.MagicLinks do
   """
   alias StytchEx.Helpers
 
+  @expiration_minutes 60
+
   def send_by_email(email) do
     url = Helpers.base_url() <> "magic_links/send_by_email"
 
     body =
       %{
         email: email,
-        magic_link_url: Helpers.magic_link_url()
+        magic_link_url: Helpers.magic_link_url(),
+        expiration_minutes: @expiration_minutes
       }
       |> Jason.encode!()
 
